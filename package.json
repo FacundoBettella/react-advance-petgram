@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
     "dev": "webpack-dev-server",
-    "lint": "standard"
+    "lint": "standard",
+    "build": "webpack",
+    "vercel-build": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -32,10 +33,13 @@
   },
   "dependencies": {
     "react": "^17.0.0",
-    "react-dom": "^17.0.0"
+    "react-dom": "^17.0.0",
+    "styled-components": "^5.3.5"
   },
   "standard": {
-    "ignore": ["/api/**"]
+    "ignore": [
+      "/api/**"
+    ]
   },
   "eslintConfig": {
     "extends": [

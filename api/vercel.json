@@ -3,7 +3,7 @@
   "name": "petgram-server-fjbdev",
   "alias": ["petgram-api-fjbdev"],
   "builds": [{ "src": "index.js", "use": "@vercel/node" }],
-  "routes": [{
+  "routes": [{ 
     "headers": {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",

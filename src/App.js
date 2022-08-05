@@ -1,10 +1,15 @@
-import React from 'react'
-import { Category } from './components/Category'
+import React, { Fragment } from "react";
+import { ListOfCategories } from "./components/ListoOfCategories/index";
+import { GlobalStyle } from "./GlobalStyles";
+
 
 const App = () => {
   return (
-    <Category />
-  )
-}
+    <Fragment>
+      <GlobalStyle />
+      <ListOfCategories />
+    </Fragment>
+  );
+};
 
-export default App
+export default App;

@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
+  devtool: "source-map",
   /* output de la compilación */
   output: {
     filename: 'app.bundle.js'
@@ -24,7 +25,7 @@ module.exports = {
             presets: ['@babel/preset-env', '@babel/preset-react']
           }
         }
-      }
+      },
     ]
-  }
+  },
 }

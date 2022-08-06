@@ -48,5 +48,10 @@ export const ListOfCategories = () => {
     );
   };
 
-  return <Fragment>{showFixed ? renderList(true) : renderList()}</Fragment>;
-};
+  return(
+    <Fragment>
+      {renderList()}
+      {showFixed && renderList(true)}
+    </Fragment>
+    ) 
+  };

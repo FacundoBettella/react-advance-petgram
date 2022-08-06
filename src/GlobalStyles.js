@@ -4,6 +4,7 @@ export const GlobalStyle = createGlobalStyle`
    html {
     box-sizing: border-box; /* Usa el padding para calcular el ancho de los elementos */
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 14px;
     }
         
     /* Todos los elementos usen border-box */

@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { ListOfCategories } from "./components/ListoOfCategories/index";
 import { GlobalStyle } from "./GlobalStyles";
-import { PhotoCard } from "./components/PhotoCard";
+import { ListOfPhotoCards } from "./components/ListoOfPhotoCards";
 
 
 const App = () => {
@@ -9,7 +9,7 @@ const App = () => {
     <Fragment>
       <GlobalStyle />
       <ListOfCategories />
-      <PhotoCard />
+      <ListOfPhotoCards />
     </Fragment>
   );
 };

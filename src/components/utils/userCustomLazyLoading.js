@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 
-export const userCustomLazyLoading = ( element ) => {
+export const userCustomLazyLoading = () => {
   const [show, setShow] = useState(false);
+  const element = useRef(null);
 
   useEffect(() => {
     /* Custom Lazy Load */
@@ -23,5 +24,5 @@ export const userCustomLazyLoading = ( element ) => {
     });
   }, [element]);
 
-  return [show];
+  return [show, element];
 };

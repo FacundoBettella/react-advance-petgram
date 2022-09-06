@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment } from "react";
 import { Category } from "../Category";
 import { Item, List } from "./style";
 import data from "../../../api/db.json";
-import { useCustomFetch } from "../utils/useCustomFetch";
+import { useCustomFetch } from "../../hooks/useCustomFetch";
 
 export const ListOfCategories = () => {
   const [ fetchData, loading ] = useCustomFetch(

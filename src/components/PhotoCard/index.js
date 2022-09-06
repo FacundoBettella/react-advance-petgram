@@ -1,8 +1,8 @@
 import React from "react";
 import { Article, Button, Image, ImgWrapper } from "./style";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
-import { userCustomLazyLoading } from "../utils/userCustomLazyLoading";
-import { useLocalStorage } from "../utils/useLocalStorage";
+import { userCustomLazyLoading } from "../../hooks/userCustomLazyLoading";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 const DEFAULT_PHOTO =
   "https://images.unsplash.com/photo-1553987882-91d92995e16c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60";
@@ -21,7 +21,7 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_PHOTO }) => {
     <Article ref={element}>
       {show && (
         <>
-          <a href={`/detail/${id}`}>
+          <a href={`/?detail=${id}`}>
             <ImgWrapper>
               <Image src={src} />
             </ImgWrapper>

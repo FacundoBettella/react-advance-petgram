@@ -1,3 +1,7 @@
+## Petgram
+
+![Captura de pantalla (382)](https://user-images.githubusercontent.com/76120904/189413755-1edc3c8f-e244-424d-b9c1-1cc29298cf9e.png)
+
 ## Comandos iniciales:
 npm i webpack webpack-cli --save-dev
 
@@ -21,13 +25,7 @@ Por ultimo hacemos: npm i webpack-dev-server --save-dev y agregamos el script:
 
 # Corremos npm run dev y levantamos servidor! :D
 
-## Seguimos con React y Babel:
-Instalamos React y react-dom y configuramos la puerta de entrada a la app a traves de un html -index.html- customizado que configuramos en webpack config. 
-Ahora, para usar jsx necesitamos instalar dependencias de babel (un loader/transpilador) => 
-    @babel/core 
-    @babel/preset-env Para que la conversion de react a js se haga a la ultima version aceptada por ecmaScript.
-    @babel/preset-react Para usar jsx
-    babel-loader El loader que utilizara webpack para utilizar babel
+![Captura de pantalla (383)](https://user-images.githubusercontent.com/76120904/189413776-0c65f998-e7f6-4653-a567-cd341a73cd1e.png)
 
 
 

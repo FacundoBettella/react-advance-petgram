@@ -1,4 +1,3 @@
-## curso-platzi-react-avanzado ⚛️
 ## Comandos iniciales:
 npm i webpack webpack-cli --save-dev
 

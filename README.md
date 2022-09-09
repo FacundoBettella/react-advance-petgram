@@ -30,5 +30,5 @@ Ahora, para usar jsx necesitamos instalar dependencias de babel (un loader/trans
     @babel/preset-react Para usar jsx
     babel-loader El loader que utilizara webpack para utilizar babel
 
-Ahora cambiamos la configuracion de webpack para que use los presets y loader mencionados previamente.
+
 

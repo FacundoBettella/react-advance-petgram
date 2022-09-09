@@ -2,7 +2,7 @@
 import { gql } from "@apollo/client";
 
 /* Hacemos las query como se utiliza en gql playground */
-export const GET_PHOTOS = gql`
+export const GET_PHOTOS_BY_CATEGORY_ID = gql`
   query getPhotos($categoryId: ID) {
     photos(categoryId: $categoryId) {
       id

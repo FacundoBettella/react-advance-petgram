@@ -5,7 +5,7 @@ import data from "../../../api/db.json";
 import { useCustomFetch } from "../../hooks/useCustomFetch";
 
 export const ListOfCategories = () => {
-  const [ fetchData, loading ] = useCustomFetch(
+  const [fetchData, loading] = useCustomFetch(
     "https://petgram-server-leidy-daza-leidydaza.vercel.app/categories"
   );
   const [categories, setCategories] = useState([]); // Para que no rompa en el map.
@@ -22,6 +22,10 @@ export const ListOfCategories = () => {
     } else {
       setCategories(data);
     }
+
+    // return () => { // This code runs when component is unmounted.
+    //   setCategories([]);
+    // };
   }, [fetchData]);
 
   useEffect(() => {
@@ -30,6 +34,7 @@ export const ListOfCategories = () => {
     // Para evitar seguir escuchando el evento cuando el componente no está montado:
     return () => document.removeEventListener("scroll", onScroll);
   }, [document.addEventListener("scroll", onScroll)]);
+
 
   const renderList = (fixed) => {
     return (
@@ -40,8 +45,9 @@ export const ListOfCategories = () => {
           </Item>
         ) : (
           categories.map((category) => (
-            <Item key={category.id}>
+            <Item key={category.id.toString()}>
               <Category
+                urlPath={`/pet/${category.id}`}
                 {...category} //pasar props por rest operator
               />
             </Item>

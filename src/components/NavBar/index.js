@@ -1,16 +1,21 @@
 import React from "react";
-import { Nav } from "./style";
-import { MdHome, MdFavoriteBorder, MdPersonOutline } from 'react-icons/md'
-import { Link } from "react-router-dom";
-function NavBar() {
+import { Nav, Link } from "./style";
+import { MdHome, MdFavoriteBorder, MdPersonOutline } from "react-icons/md";
 
-    const SIZE = "32px"
+function NavBar() {
+  const SIZE = "32px";
 
   return (
     <Nav>
-        <Link to="/"><MdHome size={SIZE} color="#E1306C"/></Link>
-        <Link to="/favs"><MdFavoriteBorder size={SIZE} color="#E1306C"/></Link>
-        <Link to="user"><MdPersonOutline size={SIZE} color="#E1306C"/></Link>
+      <Link to="/">
+        <MdHome size={SIZE} />
+      </Link>
+      <Link to="/favs">
+        <MdFavoriteBorder size={SIZE} />
+      </Link>
+      <Link to="/user">
+        <MdPersonOutline size={SIZE} />
+      </Link>
     </Nav>
   );
 }

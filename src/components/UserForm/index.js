@@ -1,10 +1,20 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useInputValues } from "../../hooks/useInputValues";
 import { Button, Form, Input, Title } from "./style";
 
-const UserForm = ({ title, onSubmit }) => {
+const UserForm = ({ title, onSubmit, activateAuth }) => {
+  const [submitResponse, setSubmitresponse] = useState("");
   const email = useInputValues("");
   const password = useInputValues("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setSubmitresponse(
+      onSubmit({ email: email.value, password: password.value }, activateAuth)
+    );
+  };
+
+  useEffect(() => {}, [submitResponse]);
 
   /*  const [inputValues, setInputValues] = useState({
     email: "",
@@ -22,7 +32,7 @@ const UserForm = ({ title, onSubmit }) => {
   return (
     <Fragment>
       <Title>{title}</Title>
-      <Form onSubmit={onSubmit}>
+      <Form onSubmit={handleSubmit}>
         <Input
           placeholder="Email"
           name="email"
@@ -40,6 +50,7 @@ const UserForm = ({ title, onSubmit }) => {
         />
         <Button>{title}</Button>
       </Form>
+      {submitResponse !== "" && <p>{submitResponse}</p>}
     </Fragment>
   );
 };

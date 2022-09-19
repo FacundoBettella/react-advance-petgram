@@ -33,7 +33,6 @@ export const Input = styled.input`
   &[disabled] {
     cursor: not-allowed;
   }
-
 `;
 
 export const Button = styled.button`
@@ -49,8 +48,8 @@ export const Button = styled.button`
   &:hover {
     cursor: pointer;
     background: ${(props) => (props.disabled ? "grey" : "#fff")};
-    color: #8d00ff;
-    border: 2px solid #8d00ff;
+    color: ${(props) => (props.disabled ? "grey" : "#8d00ff")};
+    border: ${(props) => (props.disabled ? "grey" : "2px solid #8d00ff")};
   }
 
   &:active {

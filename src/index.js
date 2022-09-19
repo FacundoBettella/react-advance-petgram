@@ -1,15 +1,44 @@
 import React from "react";
 import ReactDom from "react-dom";
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
-import ContextProvider from "./ContextProvider.js"; 
+import ContextProvider from "./ContextProvider.js";
 import App from "./App.js";
 
-const apolloClient = new ApolloClient({
-  uri: "https://petsgram-server-mappedev-339gmifsh.vercel.app/graphql" /* Servidor con graphql playground */,
-  cache: new InMemoryCache(),
+import {
+  ApolloClient,
+  ApolloProvider,
+  InMemoryCache,
+  from,
+  HttpLink,
+  ApolloLink,
+} from "@apollo/client";
+import { onError } from "@apollo/client/link/error";
+
+const authMiddleware = new ApolloLink((operation, forward) => {
+  const token = window.sessionStorage.getItem("jwt");
+  if (token) {
+    operation.setContext({
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    });
+  }
+  return forward(operation);
 });
 
-/* Context.Provider value es un objeto con valores a los que puedo acceder desde sus children components  */
+const errorMiddleware = onError(({ networkError }) => {
+  if (networkError && networkError.result.code === "invalid_token") {
+    window.sessionStorage.removeItem("jwt");
+    window.location = "/";
+  }
+});
+
+const apolloClient = new ApolloClient({
+  cache: new InMemoryCache(),
+  link: from([errorMiddleware, authMiddleware, new HttpLink({
+      uri: "https://petsgram-server-mappedev-339gmifsh.vercel.app/graphql" /* Servidor con graphql playground */,
+    })
+  ])
+});
 
 ReactDom.render(
   <ContextProvider.Provider>

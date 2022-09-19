@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Article, Image, ImgWrapper } from "./style";
 import { userCustomLazyLoading } from "../../hooks/userCustomLazyLoading";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
+// import { useLocalStorage } from "../../hooks/useLocalStorage";
 import useToggleLikeMutation from "../../container/ToggleLikeMutation";
 import FavButton from "../FavButton";
 import { Link } from "react-router-dom";
@@ -9,12 +9,12 @@ import { Link } from "react-router-dom";
 const DEFAULT_PHOTO =
   "https://images.unsplash.com/photo-1553987882-91d92995e16c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60";
 
-export const PhotoCard = ({ id, likes = 0, src = DEFAULT_PHOTO }) => {
+export const PhotoCard = ({ id, liked = false, likes = 0, src = DEFAULT_PHOTO }) => {
   const { mutation, mutationLoading, mutationError } = useToggleLikeMutation();
 
   /* getSetLocalStorage */
-  const key = `like_photo_${id}`;
-  const [liked, setLiked] = useLocalStorage(key, false);
+  // const key = `like_photo_${id}`;
+  // const [liked, setLiked] = useLocalStorage(key, false);
 
   /* Lazy Loading */
   const [show, element] = userCustomLazyLoading();
@@ -22,13 +22,13 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_PHOTO }) => {
   /* React-Apollo-Client hace que ante un cambio actualice la cache y con ello la interfaz 
   con el nuevo valor de likes (como si un useEefect llevara por dependencia "likes") */
   const handleFavClick = () => {
-    !liked &&
+    // !liked &&
       mutation({
         variables: {
           input: { id },
         },
       });
-    setLiked(!liked);
+    // setLiked(!liked);
   };
 
   return (

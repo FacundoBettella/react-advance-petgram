@@ -1,8 +1,9 @@
 import React from 'react'
+import { FavsWithQuery } from '../container/getUserFavs'
 
 function Favs() {
   return (
-    <div>Favs</div>
+    <FavsWithQuery />
   )
 }
 

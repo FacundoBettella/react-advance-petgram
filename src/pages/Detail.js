@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import Layout from "../components/Layout";
 import { PhotoCardWithQuery } from "../container/PhotoCardWithQuery";
 
-function Detail() {
+export default () => {
   let params = useParams();
 
   return (
@@ -12,6 +12,4 @@ function Detail() {
       <PhotoCardWithQuery id={params.id} />
     </Fragment>
   );
-}
-
-export default Detail;
+};

@@ -29,3 +29,8 @@ Por ultimo hacemos: npm i webpack-dev-server --save-dev y agregamos el script:
 
 
 
+Para conocer la performance de la app: 
+    ./node_modules/.bin/webpack --mode "development"
+    npx serve dist -s (-s: single page app)
+    Luego ir a performance en las herramientas del desarrollador o con react developer tools/ profiler (ponemos grabar y evaluamos un comportamiento). User memo para componentes que hacen renderizados innecesarios.
+

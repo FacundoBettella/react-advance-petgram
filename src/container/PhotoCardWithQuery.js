@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { PhotoCard } from "../components/PhotoCard";
 import { gql, useQuery } from "@apollo/client";
 
@@ -15,19 +15,26 @@ const GET_SINGLE_PHOTO = gql`
   }
 `;
 
-export const PhotoCardWithQuery = ({ id }) => {
+export const PhotoCardWithQueryContainer = ({ id }) => {
   /* Recibimos categoryId por props y con eso determinamos un filtro en la gql query GET_PHOTOS". */
   const { loading, error, data } = useQuery(GET_SINGLE_PHOTO, {
     variables: { id },
   });
 
   if (loading) {
-    return <h2>Loading...</h2>
+    return <h2>Loading...</h2>;
   }
 
   if (error) {
-    return <h2>Internal Server Error</h2>
+    return <h2>Internal Server Error</h2>;
   }
 
-  return <PhotoCard key={data.photo.id.toString()} {...data.photo}/>;
+  return <PhotoCard key={data.photo.id.toString()} {...data.photo} />;
 };
+
+export const PhotoCardWithQuery = memo(
+  PhotoCardWithQueryContainer,
+  (prevProps, props) => {
+    return prevProps.id === props - id;
+  }
+);

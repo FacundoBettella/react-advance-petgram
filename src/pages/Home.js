@@ -1,10 +1,10 @@
-import React, { Fragment } from "react";
+import React, { Fragment, memo } from "react";
 import { useParams } from "react-router-dom";
 import { ListOfCategories } from "../components/ListoOfCategories";
 import ListOfPhotoCards from "../components/ListoOfPhotoCards";
 import Layout from "../components/Layout";
 
-const Home = () => {
+const HomePage = () => {
   let params = useParams();
 
   return (
@@ -16,4 +16,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export const Home = memo(HomePage);

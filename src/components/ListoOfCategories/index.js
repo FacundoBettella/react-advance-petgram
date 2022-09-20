@@ -1,10 +1,10 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect, Fragment, memo } from "react";
 import { Category } from "../Category";
 import { Item, List } from "./style";
 import data from "../../../api/db.json";
 import { useCustomFetch } from "../../hooks/useCustomFetch";
 
-export const ListOfCategories = () => {
+const ListOfCategoriesComponent = () => {
   const [fetchData, loading] = useCustomFetch(
     "https://petgram-server-leidy-daza-leidydaza.vercel.app/categories"
   );
@@ -64,3 +64,5 @@ export const ListOfCategories = () => {
     </Fragment>
   );
 };
+
+export const ListOfCategories = memo(ListOfCategoriesComponent);

@@ -12,13 +12,6 @@ export const Button = styled.button`
 
   &:hover {
     cursor: pointer;
-    background: ${(props) => (props.disabled ? "grey" : "#fff")};
-    color: #8d00ff;
-    border: 2px solid #8d00ff;
-  }
-
-  &:active {
-    background: #7100cc;
-    color: #fff;
+    background: ${(props) => (props.disabled ? "grey" : "#7100cc")};
   }
 `;

@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useInputValues } from "../../hooks/useInputValues";
+import Layout from "../Layout";
 import { Button, ErrorMessage, Form, Input, Title } from "./style";
 
 const UserForm = ({ title, onSubmit, disabled = false, errorMessage = "" }) => {
@@ -13,6 +14,7 @@ const UserForm = ({ title, onSubmit, disabled = false, errorMessage = "" }) => {
 
   return (
     <Fragment>
+      <Layout title="Iniciar sesión" />
       <Title>{title}</Title>
       <Form disabled={disabled} onSubmit={handleSubmit}>
         <Input

@@ -47,8 +47,8 @@ export const Button = styled.button`
 
   &:hover {
     cursor: pointer;
-    background: ${(props) => (props.disabled ? "grey" : "#fff")};
-    color: ${(props) => (props.disabled ? "grey" : "#8d00ff")};
+    background: ${(props) => (props.disabled ? "grey" : "#7100cc")};
+    color: ${(props) => (props.disabled ? "grey" : "#fff")};
     border: ${(props) => (props.disabled ? "grey" : "2px solid #8d00ff")};
   }
 

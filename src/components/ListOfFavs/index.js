@@ -1,9 +1,8 @@
 import React from "react";
-import { PhotoCard } from "../PhotoCard";
 import { Grid, Image, Link } from "./styles";
+import PropTypes from "prop-types";
 
 const ListOfFavs = ({ favs = [] }) => {
-
   return (
     <Grid>
       {favs.map((current) => (
@@ -13,6 +12,15 @@ const ListOfFavs = ({ favs = [] }) => {
       ))}
     </Grid>
   );
+};
+
+ListOfFavs.propTypes = {
+  favs: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      src: PropTypes.string.isRequired,
+    })
+  ),
 };
 
 export default ListOfFavs;

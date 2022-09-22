@@ -34,3 +34,5 @@ Para conocer la performance de la app:
     npx serve dist -s (-s: single page app)
     Luego ir a performance en las herramientas del desarrollador o con react developer tools/ profiler (ponemos grabar y evaluamos un comportamiento). User memo para componentes que hacen renderizados innecesarios.
 
+Para ejecutar staticos en modo desarrollo:
+    $ npm run serve

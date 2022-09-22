@@ -16,4 +16,5 @@ const HomePage = () => {
   );
 };
 
-export const Home = memo(HomePage);
+const Home = memo(HomePage);
+export default Home;

@@ -1,6 +1,6 @@
-const { pathToArray } = require("graphql/jsutils/Path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const WebpackPwaManifestPlugin = require("webpack-pwa-manifest");
+const WorkboxPlugin = require("workbox-webpack-plugin"); // For service worker
 const path = require("path");
 
 module.exports = {
@@ -23,13 +23,64 @@ module.exports = {
         "Con Petgram encuentras fotos profesionales de animales domésticos",
       background_color: "#FFF",
       theme_color: "#b1a",
+      orientation: 'portrait',
+      display: 'standalone',
+      start_url: '/',
+      scope: '/',
       icons: [
         {
-          src: path.resolve("./src/assets/icon.jpg"),
-          size: [96, 128, 192, 256, 384, 512],
+          src: path.resolve("src/assets/icon.jpg"),
+          sizes: [96, 128, 192, 256, 384, 512],
+          destination: path.join('Icons'),
+          ios: true,
+          type: 'image/jpg'
+        },
+        {
+          src: path.resolve('src/assets/maskable_icon_x48.png'),
+          destination: path.join('Icons'),
+          size: '48x48',
+          purpose: 'any maskable',
+          type: 'image/png'
+        },
+        {
+          src: path.resolve('src/assets/maskable_icon_x128.png'),
+          destination: path.join('Icons'),
+          size: '128x128',
+          purpose: 'any maskable',
+          type: 'image/png'
+        },
+        {
+          src: path.resolve('src/assets/maskable_icon_x192.png'),
+          destination: path.join('Icons'),
+          size: '192x192',
+          purpose: 'any maskable',
+          type: 'image/png'
         },
       ],
     }),
+    new WorkboxPlugin.GenerateSW({
+      swDest: 'service-worker.js',
+      clientsClaim: true,
+      skipWaiting: true,
+      maximumFileSizeToCacheInBytes: 5000000,
+      runtimeCaching: [
+        {
+          urlPattern: new RegExp("https://(res.cloudinary.com|images.unsplash.com)"), // url donde están las imagenes.
+          handler: "CacheFirst", //Primero mirará si el recurso está en la cache antes de mirar en la red.
+          options:{
+            cacheName: "images"
+          }
+        },
+        {
+          urlPattern: new RegExp("https://petsgram-server-mappedev-339gmifsh.vercel.app/graphql"), 
+          handler: "NetworkFirst", //Primero mirará si el recurso está en la red antes de mirar en la cache.
+          options:{
+            cacheName: "api"
+          }
+        }
+      ]
+
+    })
   ],
   module: {
     rules: [
